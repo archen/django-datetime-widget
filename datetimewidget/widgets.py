@@ -131,7 +131,7 @@ class DateTimeWidget(MultiWidget):
         ]
         try:
             D = to_current_timezone(datetime.strptime(date_time[0], self.format))
-        except (ValueError, TypeError), e:
+        except (ValueError, TypeError) as e:
             return ''
         else:
             return D
@@ -171,13 +171,13 @@ class DateTimeWidget(MultiWidget):
                '</script>  ' % (id, rendered_widgets[0], id, js_options)
 
     def _media(self):
-        js = ["js/bootstrap-datetimepicker.js"]
+        js = ["js/bootstrap-datetimepicker.min.js"]
         if self.language != 'en':
             js.append("js/locales/bootstrap-datetimepicker.%s.js" % self.language)
 
         return widgets.Media(
             css={
-                'all': ('css/datetimepicker.css',)
+                'all': ('css/bootstrap-datetimepicker.min.css',)
             },
             js=js
         )
