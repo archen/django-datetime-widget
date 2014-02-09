@@ -135,7 +135,7 @@ class DateTimeWidget(MultiWidget):
         id = uuid.uuid4().hex
         return '<div id="%s"  class="input-append date form_datetime">'\
                '%s'\
-               '<span class="glyphicon">'\
+               '<span class="add-on">'\
                '<i data-time-icon="glyphicon-time" data-date-icon="glyphicon-calendar"></i></span>'\
                '</div>'\
                '<script type="text/javascript">'\
