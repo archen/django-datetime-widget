@@ -22,6 +22,20 @@ $.fn.datetimepicker.dates['en'] = {
 
 datetimepicker_options = """
     format : '%s',
+    startDate : '%s',
+    endDate : '%s',
+    weekStart : %s,
+    daysOfWeekDisabled : %s,
+    autoclose : %s,
+    startView : %s,
+    minView : %s,
+    maxView : %s,
+    todayBtn : %s,
+    todayHighlight : %s,
+    minuteStep : %s,
+    pickerPosition : '%s',
+    showMeridian : %s,
+    clearBtn : %s,
     language : '%s',
 """
 
@@ -83,6 +97,21 @@ class DateTimeWidget(MultiWidget):
             self.option += (options.get('format','dd/mm/yyyy hh:ii'),)
             self.format = pattern.sub(lambda x: dateConversiontoPython[x.group()], self.option[0])
 
+        self.option += (options.get('startDate',''),)
+        self.option += (options.get('endDate',''),)
+        self.option += (options.get('weekStart','0'),)
+        self.option += (options.get('daysOfWeekDisabled','[]'),)
+        self.option += (options.get('autoclose','true'),)
+        self.option += (options.get('startView','2'),)
+        self.option += (options.get('minView','0'),)
+        self.option += (options.get('maxView','4'),)
+        self.option += (options.get('todayBtn','false'),)
+        self.option += (options.get('todayHighlight','false'),)
+        self.option += (options.get('minuteStep','5'),)
+        self.option += (options.get('pickerPosition','bottom-right'),)
+        self.option += (options.get('showMeridian','false'),)
+        self.option += (options.get('clearBtn','true'),)
+
         self.language = options.get('language', 'en')
         self.option += (self.language,)
 
@@ -135,7 +164,7 @@ class DateTimeWidget(MultiWidget):
         id = uuid.uuid4().hex
         return '<div id="%s"  class="input-append date form_datetime">'\
                '%s'\
-               '<span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>'\
+               '<span class="add-on"><i class="icon-th"></i></span>'\
                '</div>'\
                '<script type="text/javascript">'\
                '$("#%s").datetimepicker({%s});'\
@@ -148,7 +177,7 @@ class DateTimeWidget(MultiWidget):
 
         return widgets.Media(
             css={
-                'all': ('css/datetimepicker.min.css',)
+                'all': ('css/datetimepicker.css',)
             },
             js=js
         )
