@@ -135,21 +135,20 @@ class DateTimeWidget(MultiWidget):
         id = uuid.uuid4().hex
         return '<div id="%s"  class="input-append date form_datetime">'\
                '%s'\
-               '<span class="add-on glyphicon">'\
-               '<i data-time-icon="glyphicon-time" data-date-icon="glyphicon-calendar"></i></span>'\
+               '<span class="add-on"><i data-time-icon="icon-time" data-date-icon="icon-calendar"></i></span>'\
                '</div>'\
                '<script type="text/javascript">'\
                '$("#%s").datetimepicker({%s});'\
                '</script>  ' % (id, rendered_widgets[0], id, js_options)
 
     def _media(self):
-        js = ["js/bootstrap-datetimepicker.min.js"]
+        js = ["js/bootstrap-datetimepicker.js"]
         if self.language != 'en':
             js.append("js/locales/bootstrap-datetimepicker.%s.js" % self.language)
 
         return widgets.Media(
             css={
-                'all': ('css/bootstrap-datetimepicker.min.css',)
+                'all': ('css/datetimepicker.min.css',)
             },
             js=js
         )
