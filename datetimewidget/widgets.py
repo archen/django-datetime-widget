@@ -4,7 +4,7 @@ __author__ = 'Alfredo Saglimbeni'
 import re
 import uuid
 
-from django.forms.widgets import  MultiWidget , to_current_timezone, DateTimeInput
+from django.forms.widgets import MultiWidget, to_current_timezone, DateTimeInput
 from datetime import datetime
 from django.utils.formats import get_format, get_language
 I18N = """
@@ -94,7 +94,7 @@ class DateTimeWidget(MultiWidget):
             self.to_local()
         else:
             pattern = re.compile(r'\b(' + '|'.join(dateConversiontoPython.keys()) + r')\b')
-            self.option += (options.get('format','dd/mm/yyyy hh:ii'),)
+            self.option += (options.get('format','dd/mm/yyyy hh:ii:ss'),)
             self.format = pattern.sub(lambda x: dateConversiontoPython[x.group()], self.option[0])
 
         self.option += (options.get('startDate',''),)
